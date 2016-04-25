@@ -866,23 +866,17 @@ class PlainTextParser(BaseParser):
 def Which_data_for_this_problem():
 	""" 
 	Our scraping is broken down into four different functions, gathering the journals, issues, articles, and then full text.  
-	To scrape a journal hosting website, Create a JSON object with fields function and url
-	Function can be (Journals, Issues, Articles, FullText, or All)
-	If Function = Journals or All, please add field source.
-		Source can be (XPathFile, ClassTag, XPathTag, or BeautifulSoup).  The first three options will scrape
-			the website using HTML tags, while the BeautifulSoup will scrape the entire website.  If you aren't
-			sure which one to pick, enter BeautifulSoup.  
-		If you choose XPathFile, add a field 'filename'
-		If you choose ClassTag or XPathTag, add a field 'tagString' with the your tag string.
-	If Function = Issues, Articles, or FullText, please enter the filename of the file containing
-		the list of journals, the list of issues, or the seedlist respectively 
-	Example:
-	[
-		'Function': Journals,
-		'url': www.google.com,
-		'source': BeautifulSoup
-	]
-	
+	To scrape a journal hosting website, Create a JSON object with fields function and url.  Function can be (Journals, Issues, Articles, FullText, or All).  
+	If Function = Journals or All, please add field source.  Source can be (XPathFile, ClassTag, XPathTag, or BeautifulSoup).
+	The first three options will scrape the website using HTML tags, while the BeautifulSoup will scrape the entire website.  If you aren't sure which one to pick, enter BeautifulSoup.    
+		If you choose XPathFile, add a field 'filename'  
+		If you choose ClassTag or XPathTag, add a field 'tagString' with the your tag string.   
+	Example:  
+	{  
+		"Function": "Journals",  
+		"url": "www.google.com",  
+		"source": "BeautifulSoup"  
+	}  
 	"""
 	if request.method == 'POST':
 		function = str(request.data.get('function', ''))
